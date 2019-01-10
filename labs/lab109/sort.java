@@ -11,19 +11,20 @@ public class sort
         int small = 0; 
         int nums[] = new int[]{3, 6, 2, 5, 7, 1, 0, 8, 5, 1};
         int order[] = new int [nums.length];
-
         int i  = 0;
-        for (int x = 0; x<nums.length; x++){
+        while(i< nums.length){
+            for (int x = 0; x<nums.length; x++){
 
-            if (nums[x] == small){
-                order[nums[x]] =small;
-                i++;
+                if (nums[x] == small){
+                    order[i] =small;
+                    i++;
+                }
+
             }
-            if (nums[x] != small) {
-                i++;
-            }
-                    System.out.println(order[x]); 
+            small ++; 
         }
-
+        for (int j = 0; j< order.length; j++){
+        System.out.println(order[j]); 
     }
+}
 }
