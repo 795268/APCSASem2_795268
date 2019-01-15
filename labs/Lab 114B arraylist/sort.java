@@ -2,8 +2,9 @@
 /**
  * Write a description of class lan109 here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ *Elena Campell
+ *Same as lab 114, but with arraylists instead of arrays
+ * 
  */
 import java.util.ArrayList; 
 public class sort
@@ -11,6 +12,11 @@ public class sort
     public static void mySort(){
         int small = 0; //int to find the smallest unsorted values
         ArrayList<Integer> nums = new ArrayList <Integer> (); 
+        nums.add(4);
+        nums.add(7);
+        nums.add(29);
+        nums.add(1);
+        nums.add(3);
         ArrayList<Integer> order = new ArrayList <Integer> ();
         int i  = 0; 
         while(i< nums.size()){ //keeps track of length of sorted array
@@ -77,19 +83,19 @@ public class sort
         int temp;
         int swap = 0; 
         int compare =0; 
-        for (int i = 1; i < nums.length; i++){
+        for (int i = 1; i < nums.size(); i++){
             for (int j = i; j > 0; j--){
-                if (nums[j] < nums[j-1]) { // if the current value is less, swap
-                    temp = nums [j];
-                    nums [j] = nums [j-1]; 
-                    nums [j-1] = temp; 
+                if (nums.get(j) < nums.get(j-1)) { // if the current value is less, swap
+                    temp = nums.get(j);
+                    nums.get(j) = nums.get(j-1); 
+                    nums.get(j-1) = temp; 
                     swap++;
                 }
                 compare++;
             }
         }
-        for (int k = 0; k< nums.length; k++){ // loop to print all values of sorted array
-            System.out.println(nums[k]); 
+        for (int k = 0; k< nums.size(); k++){ // loop to print all values of sorted array
+            System.out.println(nums.get(k)); 
         }
         System.out.println("swap:" + swap); 
         System.out.print("compare:" + compare); 
