@@ -117,5 +117,52 @@ public class StudList
 
         return count; 
     }
+    
+     public void sortList() {
+     if (studList.size() ==0){
+         System.out.print ("List has not students");
+        }else {
+            mergeSort(studList, studList.size());
+            System.out.println("Students sorted by number:");
+            printStudentList();
+        }
+    }
+    
+    public static void mergeSort(ArrayList<Student> a , int n) {
+        if (n < 2) { //  Base Case
+            return;
+        }
+        int mid = n / 2;
+        ArrayList<Student> l = new ArrayList<Student>();
+        ArrayList<Student> r = new ArrayList<Student>();
+        for (int i = 0; i < mid; i++) {
+         l.add(a.get(i)); 
+        }
+        for (int i = mid; i < n; i++) {
+            r.add(a.get(i));
+        }
+        mergeSort(l, mid);
+        mergeSort(r, n - mid);
+        //+++++++++ Helper Function ++++++++++++
+        merge(a, l, r, mid, n - mid);
+    }
+
+   
+    public static void merge(ArrayList<Student> a, ArrayList<Student> l, ArrayList<Student> r, int left, int right) {
+        int i = 0, j = 0, k = 0;
+        while (i < left && j < right) {
+            if (l.get(i).getStudNumber()<= r.get(j).getStudNumber()) {
+              a.set(k++, l.get(i++));
+            }else {
+                a.set(k++, r.get(j++)); 
+            }
+        }
+        while (i < left) {
+            a.set(k++, l.get(i++));
+        }
+        while (j < right) {
+           a.set(k++, r.get(j++)); 
+        }
+    } 
 }
 

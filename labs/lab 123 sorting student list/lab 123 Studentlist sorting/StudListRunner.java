@@ -7,7 +7,6 @@
  */
 
 import java.util.Scanner; 
-
  
 public class StudListRunner
 {
@@ -131,7 +130,10 @@ public class StudListRunner
                     tryAgain();
                 }
                 System.out.println();
-            } else {
+            } else if (demand ==8){
+                studlist.sortList();
+                System.out.println();
+            }else{
                 tryAgain();
             } 
                 tryAgain();
@@ -151,6 +153,8 @@ public class StudListRunner
         System.out.println ("5. Print list of students"); 
         System.out.println ("6. Print one student"); 
         System.out.println ("7. End the program"); 
+        System.out.println ("8: Sort list by student number");
+        System.out.println ("9: Search list by student number");
         int input  = scr.nextInt(); 
         return input;  
 
