@@ -7,7 +7,7 @@
  */
 
 import java.util.Scanner; 
- 
+
 public class StudListRunner
 {
     public static  void main() {
@@ -68,7 +68,6 @@ public class StudListRunner
                             System.out.println ("Student not found");
                         }
 
-                        
                     }else {
                         tryAgain();
                     }
@@ -131,8 +130,12 @@ public class StudListRunner
                 }
                 System.out.println();
             } else if (demand ==8){
-                studlist.sortList();
+                StudList.sortList();
                 System.out.println();
+               
+         }else if (demand == 9){
+                
+                
             }else{
                 tryAgain();
             } 
