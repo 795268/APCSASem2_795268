@@ -118,7 +118,7 @@ public class StudList
         return count; 
     }
 
-    public void sortList() {
+    public  void sortList() {
         if (studList.size() ==0){
             System.out.print ("List has not students");
         }else {
@@ -164,8 +164,29 @@ public class StudList
         }
     } 
     
-    public void searchList(){
-        
+    public  void searchList(int n){
+        if(studList.size() == 0) {
+            System.out.print("Your list has no students");
+        } else {
+            mergeSort(studList, studList.size());
+            binarySearch(studList, n, 0, studList.size());
+        }
     }
-}
+    
+    public void binarySearch(ArrayList<Student> a, int n, int start, int end) {
+        int index = (end-start)/2;
+        if(a.get(index).getStudNumber() == n){
+            System.out.println();
+            System.out.println("The student number " + n + " is:");
+            System.out.println("Name: " + studList.get(index).getfullName() + ", Student Number: " + n + ", GPA: " + studList.get(index).getgpa());
+            return;
+        }
+        if(a.get(index).getStudNumber() < n){
+            binarySearch(a, n, index, end);
+        } else {
+            binarySearch(a, n, 0, index);
+        }
+    }
+    }
+    
 

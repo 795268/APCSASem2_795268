@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class StudListRunner
 {
-    public static  void main() {
+    public  static void main() {
         boolean done = false;//starts unfinished
         StudList studlist = new StudList(); // creates new student object 
         while (done == false){ // when code is unifinsed...
@@ -76,7 +76,6 @@ public class StudListRunner
                     System.out.println ("Enter student last name"); 
                     String last = demand31.nextLine();
 
-                  
                     Scanner demand32 = new Scanner (System.in); 
                     System.out.println("Enter updated name"); 
                     String name = demand31.nextLine(); 
@@ -124,7 +123,7 @@ public class StudListRunner
                     Scanner command62 = new Scanner(System.in);
                     System.out.print("Enter student last name.");
                     String last = command62.nextLine();
-                   // studlist.printStudent();
+                    // studlist.printStudent();
                 } else {
                     tryAgain();
                 }
@@ -132,19 +131,21 @@ public class StudListRunner
             } else if (demand ==8){
                 StudList.sortList();
                 System.out.println();
-               
-         }else if (demand == 9){
-                
-                
-            }else{
+            }else if (demand == 9){
+
+            }else if(demand == 9)
+            {Scanner command9 = new Scanner(System.in);
+                System.out.print("What student number would you like to search for? ");
+                int number = command9.nextInt();
+                StudList.searchList(number); // calls the binarySort method
+                System.out.println();}
+            else{
                 tryAgain();
             } 
-                tryAgain();
-            }
-
-                
+            tryAgain();
         }
-    
+
+    }
 
     public static int menuNumber(){ // creates menu for user 
         Scanner scr = new Scanner(System.in); 
