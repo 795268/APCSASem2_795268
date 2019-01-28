@@ -1,13 +1,12 @@
 
 /**
- * Write a description of class lan109 here.
+ * Write a description of class sort2 here.
  *
  *Elena Campell
- *Same as lab 114, but with arraylists instead of arrays
- * 
+ *adding merge sort with arraylists 
  */
-import java.util.ArrayList; 
-public class sort
+import java.util.ArrayList;
+public class sort2
 {
     public static void mySort(){
         int small = 0; //int to find the smallest unsorted values
@@ -166,5 +165,47 @@ public class sort
         System.out.println("compare:" + compare); 
         System.out.print( "Time:" + (timeEnd- time)); 
     }
+    
+    public static void mergeSort(ArrayList<Integer> a, int n) {
+        if (n < 2) { //  Base Case
+            return;
+        }
+        int mid = n / 2;
+        ArrayList<Integer> l = new ArrayList<Integer>();
+        ArrayList<Integer> r = new ArrayList<Integer>();
+        for (int i = 0; i < mid; i++) {
+         l.set(i,a.get(i)); 
+         
+        }
+        for (int i = mid; i < n; i++) {
+            r.set((i-mid), a.get(i));
+        }
+        mergeSort(l, mid);
+        mergeSort(r, n - mid);
+        //+++++++++ Helper Function ++++++++++++
+        merge(a, l, r, mid, n - mid);
+    }
 
+    
+    public static void merge(ArrayList<Integer> a, ArrayList<Integer> l, ArrayList<Integer> r, int left, int right) {
+        int i = 0, j = 0, k = 0;
+        while (i < left && j < right) {
+            if (l.get(i) <= r.get(j)) {
+               a.set(k++, l.get(i++));
+            }else {
+                a.set(k++, r.get(j++)); 
+            }
+        }
+        while (i < left) {
+            a.set(k++, l.get(i++));
+        }
+        while (j < right) {
+            a.set(k++, r.get(j++)); 
+        }
+
+        for (int x =0; x< a.size(); x ++){
+            System.out.println(a.get(x));
+        }
+    } 
+    
 }
