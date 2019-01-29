@@ -129,7 +129,7 @@ public class StudListRunner
                 }
                 System.out.println();
             } else if (demand ==8){
-                StudList.sortList();
+                studList.sortList();
                 System.out.println();
             }else if (demand == 9){
 
@@ -137,7 +137,7 @@ public class StudListRunner
             {Scanner command9 = new Scanner(System.in);
                 System.out.print("What student number would you like to search for? ");
                 int number = command9.nextInt();
-                StudList.searchList(number); // calls the binarySort method
+                studList.searchList(number); // calls the binarySort method
                 System.out.println();}
             else{
                 tryAgain();
