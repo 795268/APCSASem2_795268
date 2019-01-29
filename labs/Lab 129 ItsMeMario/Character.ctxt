@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Character
+comment0.text=\r\nlab\ 129\ \r\nsuper-sub\ class\ relationships\r\n\ @elena\ campell\r\n
+comment1.params=cp\ sp
+comment1.target=Character(java.lang.String,\ int)
+comment2.params=sp
+comment2.target=void\ setSpeed(int)
+comment3.params=cp
+comment3.target=void\ setCatchphrase(java.lang.String)
+comment4.params=
+comment4.target=int\ getSpeed()
+comment5.params=
+comment5.target=java.lang.String\ getCatchphrase()
+numComments=6
