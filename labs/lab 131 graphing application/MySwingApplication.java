@@ -12,7 +12,7 @@ public class MySwingApplication implements Runnable
     public void run(){
         JFrame jFrame = new JFrame("Window"); 
         jFrame.setSize(500,679);
-        CanvasComponent canvasComponent = new CanvasComponent(40, 2);
+        CanvasComponent canvasComponent = new CanvasComponent(60,90);
         jFrame.add(canvasComponent); 
         jFrame.setDefaultCloseOperation(jFrame.EXIT_ON_CLOSE);
         jFrame.setVisible(true);
