@@ -8,7 +8,7 @@
 import java.awt.*; 
 import javax.swing.*;
 import java.awt.event.*;
-public class CanvasComponent extends JComponent implements MouseListener, MouseMotionListener
+public class CanvasComponent extends JComponent implements MouseListener, MouseMotionListener, ActionListener, KeyListener
 {
     int rectHeight; 
     int rectWidth; 
@@ -19,21 +19,28 @@ public class CanvasComponent extends JComponent implements MouseListener, MouseM
     boolean shapeSelected;
     int mouseToX;
     int mouseToY; 
+    int animationDeltaX =1;
+    int animationDeltaY = 0;
+    int gutterX = 10;
+    int gutterY = 10; 
+    Timer animationTimer; 
+    int motionSpeed = 1; 
+
     public CanvasComponent(int width, int height){
         setSize(width, height); 
-        height = 60;
-        width = 100;
+        rectHeight = 60; 
+        rectWidth = 100;
         rectX =40;
         rectY= 20; 
         this.addMouseListener(this); 
         this.addMouseMotionListener(this); 
-        
-
+        animationTimer = new Timer (20, this); 
+        animationTimer.start();
     }
 
     protected void paintComponent(Graphics g){
         g.setColor(Color.red); 
-        g.fillRect(60,90,100,200); 
+        g.fillRect(rectX, rectY, rectWidth, rectHeight); 
     }
 
     //Mouse Listener methods
@@ -43,14 +50,14 @@ public class CanvasComponent extends JComponent implements MouseListener, MouseM
 
     public void mousePressed(MouseEvent e){
         //This method is called by Swing when a mouse button is pressed.�
-       mouseFromX = e.getX();
-       mouseFromY = e.getY();
-       if (mouseFromX > rectX && mouseFromX < rectX +rectWidth &&
-       mouseFromY > rectY && mouseFromY < rectY + rectHeight){
-           shapeSelected = true; 
+        mouseFromX = e.getX();
+        mouseFromY = e.getY();
+        if (mouseFromX > rectX && mouseFromX < rectX +rectWidth &&
+        mouseFromY > rectY && mouseFromY < rectY + rectHeight){
+            shapeSelected = true; 
         }
         else shapeSelected = false;
-        
+
     }
 
     public void mouseReleased(MouseEvent e){
@@ -69,18 +76,66 @@ public class CanvasComponent extends JComponent implements MouseListener, MouseM
     public void mouseDragged(MouseEvent e){
         //This method is called by Swing when a mouse button is pressed and then the mouse is moved with the button depressed.�0
         if (shapeSelected == true) {
-        mouseToX = e.getX(); 
-        mouseToY = e.getY(); 
-        rectX = rectX + (mouseToX - mouseFromX);
-        rectY = rectY + (mouseToY - mouseFromY);
-        mouseFromX = mouseToX; 
-        mouseFromY = mouseToY;
-        repaint(); 
+            mouseToX = e.getX(); 
+            mouseToY = e.getY(); 
+            rectX = rectX + (mouseToX - mouseFromX);
+            rectY = rectY + (mouseToY - mouseFromY);
+            mouseFromX = mouseToX; 
+            mouseFromY = mouseToY;
+            repaint(); 
+        }
     }
-}
 
     public void mouseMoved(MouseEvent e){
         //This method is called by Swing when the mouse is moved without any button ,depressed.�
+    }
+
+    public void actionPerformed(ActionEvent e){
+        Dimension componentSizeDimension = getSize();
+        if ((rectX + rectWidth + animationDeltaX + gutterX) > componentSizeDimension.getWidth()){
+            animationDeltaX = 0 ;
+            animationDeltaY = 1;
+            rectX = (int)componentSizeDimension.getWidth() - rectWidth - gutterX; 
+            rectY = rectY + animationDeltaY*motionSpeed; 
+        }
+        else if(rectY + rectHeight + animationDeltaY +gutterY > componentSizeDimension.getHeight()){
+            animationDeltaX = -1;
+            animationDeltaY = 0;
+            rectY = (int)componentSizeDimension.getHeight() - rectHeight - gutterY; 
+            rectX = rectX + animationDeltaX*motionSpeed; 
+        }
+        else if (rectX + animationDeltaX < gutterX){
+            animationDeltaX = 0;
+            animationDeltaY = -1;
+            rectX = gutterX; 
+            rectY = rectY + animationDeltaY*motionSpeed;
+        }
+        else if(rectY +animationDeltaY< gutterY){
+            animationDeltaX = 1;
+            animationDeltaY = 0;
+            rectY = gutterY; 
+            rectX = rectX + animationDeltaX*motionSpeed;
+        }else {
+            rectX = rectX + animationDeltaX*motionSpeed;
+            rectY = rectY + animationDeltaY*motionSpeed; 
+        }
+        repaint();
+    }
+
+    public void keyTyped (KeyEvent e){
+        //Invoked when a key has been typed. Implementing this method is usually enough
+        //for most applications, and it will be for ours
+        char KeyChar = e.getKeyChar();
+        if (KeyChar == '+') motionSpeed++; 
+        else if (KeyChar =='-') motionSpeed --; 
+
+    }
+    public void keyPressed(KeyEvent e){
+        //Invoked when a key has been pressed. You will leave the implementation of this empty.
+    }
+
+    public void keyReleased(KeyEvent e){
+        // Invoked when a key has been released. You will leave the implementation of this empty.�
     }
 
 }
