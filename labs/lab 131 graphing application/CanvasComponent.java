@@ -25,7 +25,9 @@ public class CanvasComponent extends JComponent implements MouseListener, MouseM
     int gutterY = 10; 
     Timer animationTimer; 
     int motionSpeed = 1; 
-
+    int ClickedX; 
+    int ClickedY; 
+    boolean OutofShape; 
     public CanvasComponent(int width, int height){
         setSize(width, height); 
         rectHeight = 60; 
@@ -45,7 +47,6 @@ public class CanvasComponent extends JComponent implements MouseListener, MouseM
 
     //Mouse Listener methods
     public void mouseClicked(MouseEvent e){
-        //This method is called by Swing when a mouse button is pressed and released
     }
 
     public void mousePressed(MouseEvent e){
@@ -62,6 +63,15 @@ public class CanvasComponent extends JComponent implements MouseListener, MouseM
 
     public void mouseReleased(MouseEvent e){
         //This method is called by Swing when a mouse button is released.
+        if (OutofShape == true) {
+            mouseToX = e.getX(); 
+            mouseToY = e.getY(); 
+            rectX = rectX + (mouseToX - mouseFromX);
+            rectY = rectY + (mouseToY - mouseFromY);
+            mouseFromX = mouseToX; 
+            mouseFromY = mouseToY;
+            repaint(); 
+        }
     }
 
     public void mouseEntered(MouseEvent e){
@@ -88,6 +98,13 @@ public class CanvasComponent extends JComponent implements MouseListener, MouseM
 
     public void mouseMoved(MouseEvent e){
         //This method is called by Swing when the mouse is moved without any button ,depressed.�
+     mouseFromX = e.getX(); 
+     mouseFromY = e.getY(); 
+     if (mouseFromX > rectX && mouseFromX < rectX +rectWidth &&
+        mouseFromY > rectY && mouseFromY < rectY + rectHeight){
+            OutofShape = false; 
+        }
+        else OutofShape = true;
     }
 
     public void actionPerformed(ActionEvent e){
@@ -136,6 +153,7 @@ public class CanvasComponent extends JComponent implements MouseListener, MouseM
 
     public void keyReleased(KeyEvent e){
         // Invoked when a key has been released. You will leave the implementation of this empty.�
+    
     }
 
 }
