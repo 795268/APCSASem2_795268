@@ -61,8 +61,16 @@ public class Deck {
 	 * Randomly permute the given collection of cards
 	 * and reset the size to represent the entire deck.
 	 */
-	public void shuffle() {
+	public void shuffle() { // using selection shuffle from activity 3 
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
+		size = cards.size(); 
+		for (int k = size() -1; k>= 1; k--){
+            int r = (int)(Math.random()*(k+1)); 
+            Card cardK = new Card(cards.get(k).rank(), cards.get(k).suit(), cards.get(k).pointValue());
+            Card cardR = new Card(cards.get(r).rank(), cards.get(r).suit(), cards.get(r).pointValue());
+            cards.set(k, cardR);
+            cards.set(r, cardK);; 
+        }
 	}
 
 	/**
