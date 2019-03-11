@@ -23,7 +23,8 @@ public class WordPairList
     public int numMatches() { 
         int numMatches = 0 ; 
         for (int i = 0; i < allPairs.size() ; i ++){
-            if (allPairs.getFirst().equals(allPairs.getSecond())){
+           WordPair pair = allPairs.get(i); 
+            if (pair.getFirst().equals(pair.getSecond())){
                 numMatches ++;
             }
         }
