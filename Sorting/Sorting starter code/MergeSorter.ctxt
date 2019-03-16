@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=MergeSorter
+comment0.text=\n\ Write\ a\ description\ of\ class\ MergeSorter\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=nums
+comment1.target=void\ sort(int[])
+comment2.params=a\ l\ r\ left\ right
+comment2.target=void\ merge(int[],\ int[],\ int[],\ int,\ int)
+numComments=3

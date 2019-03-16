@@ -94,7 +94,7 @@ public class SortRunner
     static final int MOVE_STAT_ID = 1;
     static final int EXTRA_SPACE_STAT_ID = 2;
     static final int ELAPSED_TIME_STAT_ID = 3;
-    
+
     public static final int SORTED_ARRAY_INDEX = 0;
     public static final int REVERSE_SORTED_ARRAY_INDEX = 1;
     public static final int RANDOM_ARRAY_INDEX = 2;
@@ -211,7 +211,7 @@ public class SortRunner
         printOneStatistic(outerSorterArray, COMPARISON_STAT_ID, name);
         printOneStatistic(outerSorterArray, MOVE_STAT_ID, name);
         printOneStatistic(outerSorterArray, EXTRA_SPACE_STAT_ID, name);
-//        printOneStatistic(outerSorterArray, ELAPSED_TIME_STAT_ID, name);
+        //        printOneStatistic(outerSorterArray, ELAPSED_TIME_STAT_ID, name);
     }
 
     public static void main() {
@@ -223,21 +223,21 @@ public class SortRunner
         Sorter[][] heapSorterArray = new Sorter[lengthArray.length][];
         for (int lengthIndex = 0; lengthIndex < lengthArray.length; lengthIndex++) {
             int length = lengthArray[lengthIndex];
-            //             SelectionSorter selectionSorter = new SelectionSorter();
-            //             selectionSorterArray[lengthIndex] = runStandardSorts(selectionSorter, length, "Selection sort");
-            //             InsertionSorter insertionSorter = new InsertionSorter();
-            //             insertionSorterArray[lengthIndex] = runStandardSorts(insertionSorter, length, "Insertion sort");
-            //             MergeSorter mergeSorter = new MergeSorter();
-            //             mergeSorterArray[lengthIndex] = runStandardSorts(mergeSorter, length, "Merge sort");
+            SelectionSorter selectionSorter = new SelectionSorter();
+            selectionSorterArray[lengthIndex] = runStandardSorts(selectionSorter, length, "Selection sort");
+            InsertSorter insertionSorter = new InsertSorter();
+            insertionSorterArray[lengthIndex] = runStandardSorts(insertionSorter, length, "Insertion sort");
+            MergeSorter mergeSorter = new MergeSorter();
+            mergeSorterArray[lengthIndex] = runStandardSorts(mergeSorter, length, "Merge sort");
             //             HeapSorter heapSorter = new HeapSorter();
             //             heapSorterArray[lengthIndex] = runStandardSorts(heapSorter, length, "Heap sort");
             QuickSorter quickSorter = new QuickSorter();
             quickSorterArray[lengthIndex] = runStandardSorts(quickSorter, length, "Quick sort");
         }
-        // printStandardResults(selectionSorterArray, "Selection sort");
+         printStandardResults(selectionSorterArray, "Selection sort");
         // printStandardResults(insertionSorterArray, "Insertion sort");
         // printStandardResults(mergeSorterArray, "Merge sort");
         // printStandardResults(heapSorterArray, "Heap sort");
-        printStandardResults(quickSorterArray, "Quick sort");    
+        //printStandardResults(quickSorterArray, "Quick sort");    
     }
 }
