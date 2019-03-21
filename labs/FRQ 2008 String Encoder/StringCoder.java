@@ -22,8 +22,11 @@ public class StringCoder
     public String decodeString(ArrayList<StringPart> parts)
     {
         String word = ""; 
+        StringPart s = new StringPart(int start, int length); 
         for (int i = 0; i < parts.size(); i ++){
-         int end =     
+         int end = s.getStart(); 
+         int length = s.getLength(); 
+         String temp = 
         }
     }
 
@@ -43,7 +46,21 @@ public class StringCoder
      * to create word
      */
     public ArrayList<StringPart> encodeString(String word)
-    { /* to be implemented in part (b) */ }
-    // There may be instance variables, constructors, and methods that are not shown.
-} 
+    { 
+        ArrayList<StringPart> list = new ArrayList(); 
+        String str = word; 
+        while (str.length()>0){
+            StringPart s = findPart(str); 
+            list.add(5);
+            int length = s.getLength(); 
+            if (length <= str.length()){
+                str = str.substring(length); 
+            }
+        }
+        return list; 
+       }
+   // There may be instance variables, constructors, and methods that are not shown.
+}
+
+ 
 
