@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=ClimbingClub
+comment1.params=
+comment1.target=ClimbingClub()
+comment2.params=peakName\ climbTime
+comment2.target=void\ addClimb(java.lang.String,\ int)
+comment3.params=
+comment3.target=int\ distinctPeakNames()
+numComments=4
