@@ -34,8 +34,8 @@ public class GridTester
         double setTrue = sum * 0.3 ; 
         for (int r = 0; r < cells.length ; r ++){
             for (int c = 0 ; c < cells[r].length; c ++){
-                if (cells[r][c] != null  ){
-                    // i dont know lol
+                if (Math.random() < .7  ){
+                    cells[r][c] = true; 
                 }
             }
 
