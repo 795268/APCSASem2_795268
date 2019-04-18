@@ -9,20 +9,20 @@ import java.util.*;
 public class Cell
 {
 
-    // that will load the neighbors list with all cells that are not occupied (north, east, south, west only)
     boolean occupied; 
     int id;
-    ArrayList<Cell> neighbors = new ArrayList<Cell>(); 
-
-    public void loadNeighbors(){
-        for (int r = 0; r < neighbors.length ; r ++){
-            for (int c = 0 ; c < neighbors[r].length; c ++){
-                if ( neighbors [r][c] ==null){
-                    neighbors[r][c] = new Cell();     
-                }
-            }
-
-        }
-
+    ArrayList<Cell> neighbors;  
+    // that will load the neighbors list with all cells that are not occupied (north, east, south, west only)
+    public Cell(){
+        neighbors = new ArrayList<Cell>();
+        occupied = false; 
+        id = 0; 
     }
+     
+    
+    public boolean setOccupied (boolean occupied){
+        return occupied; 
+    }
+
+    
 }
