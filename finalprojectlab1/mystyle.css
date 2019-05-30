@@ -1,0 +1,43 @@
+
+
+
+body{
+    background-image: url("mountain.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top;
+    border: black;
+}
+h1{
+    font-family: AppleGothic;
+    font-max-size: xx-large;
+    color: green;
+    text-align: center;
+}
+
+p{
+    text-align: left;
+    color: orangered;
+    font-size: large;
+}
+
+#wrapperDiv {
+    width: 1500px;
+    height: 1000px;
+    float: bottom;
+}
+#rapImg{
+    width: 25%;
+    height: 300px;
+    float: left;
+}
+#tallImg{
+    width: 25%;
+
+    float: bottom;
+}
+#ankyImg{
+    width: 25%;
+    height: 200px;
+    float: bottom;
+}
